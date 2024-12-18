@@ -3,11 +3,11 @@ import math
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    price_dict = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E':40}
+    price_dict = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E':40, 'F':10}
     multi_offers_dict = {'A': {5:200, 3:130}, 'B': {2:45}}
-    one_free_offers_dict = {'E': (2,'B')}
+    one_free_offers_dict = {'E': (2,'B'), 'F':(2,'F')}
 
-    shopping_cart = {'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0}
+    shopping_cart = {'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0, 'F': 0}
 
     for char in skus:
         if char in shopping_cart:
@@ -49,3 +49,7 @@ def checkout(skus):
 
 
     return total
+
+
+
+
