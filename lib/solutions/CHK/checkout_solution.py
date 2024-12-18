@@ -3,8 +3,9 @@ import math
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    price_dict = {'A': 50, 'B': 30, 'C': 20, 'D': 15}
-    offers_dict = {'A': (3,130), 'B': (2,45)}
+    price_dict = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E':40}
+    multi_offers_dict = {'A': {5:200, 3:130}, 'B': {2:45}}
+    one_free_offers_dict = {'E': (2,'B')}
 
     shopping_cart = {'A': 0, 'B': 0, 'C': 0, 'D': 0}
 
@@ -16,6 +17,7 @@ def checkout(skus):
 
     total = 0
 
+
     for item in shopping_cart:
         if item in offers_dict:
             remainder = shopping_cart[item] % offers_dict[item][0]
@@ -24,4 +26,5 @@ def checkout(skus):
             total += price_dict[item] * shopping_cart[item]
 
     return total
+
 
