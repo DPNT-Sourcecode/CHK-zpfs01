@@ -19,6 +19,9 @@ def checkout(skus):
 
     for item in shopping_cart:
         if item in multi_offers_dict:
+
+
+            """
             for offer in multi_offers_dict[item]:
                 print(shopping_cart[item])
                 print(offer)
@@ -28,6 +31,18 @@ def checkout(skus):
                     shopping_cart[item] = remainder
 
                     break
+            """
+            print(multi_offers_dict[item].keys())
+            smallest_offer = multi_offers_dict[item].keys()[-1]
+
+            while shopping_cart[item] >= smallest_offer:
+                for offer in multi_offers_dict[item]:
+                    if shopping_cart[item] >= offer:
+                        total += (math.floor(shopping_cart[item] / offer) * multi_offers_dict[item][offer])
+                        remainder = shopping_cart[item] % offer
+                        shopping_cart[item] = remainder
+
+                        break
         
         if item in one_free_offers_dict:
             free_item = one_free_offers_dict[item][1]
@@ -49,4 +64,5 @@ def checkout(skus):
 
 price = checkout('AAAAA')
 print(price) 
+
 
