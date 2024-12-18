@@ -71,12 +71,15 @@ def checkout(skus):
             print('count: ' + str(count))
             if count + item_num_list[x] >= threshold:
                 total += offer
+
                 item_num_list[x] -= (threshold-count)
                 count = 0
                 for y in range(0, x):
                     shopping_cart[group_offers_dict[offer][1][y]] = item_num_list[y]
 
-                    print(item_num_list)
+                print(total)
+                print(item_num_list)
+                print(shopping_cart)
             else:
                 print('x:' + str(x))
                 print(item_num_list[x])
@@ -97,6 +100,7 @@ def checkout(skus):
 
 price = checkout('XYZ')
 print(price)
+
 
 
 
