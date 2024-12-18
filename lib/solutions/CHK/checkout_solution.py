@@ -54,11 +54,14 @@ def checkout(skus):
                         break
 
     for offer in group_offers_dict:
+        print('offering')
         threshold = group_offers_dict[offer][0]
+        print(threshold)
         item_num_list = []
         for item in group_offers_dict[offer][1]:
             item_num_list.append(shopping_cart[item])
         # group_offers_dict = {45: (3, ['Z', 'Y', 'S', 'T', 'X'])}
+        print(item_num_list)
         x = 0
         count = 0
         while True:
@@ -73,6 +76,7 @@ def checkout(skus):
                     shopping_cart[group_offers_dict[offer][1][y]] = item_num_list[y]
             else:
                 x += 1
+                print('x:' + str(x))
                 if x > len(item_num_list)-1:
                     break
                 count += item_num_list[x]
@@ -87,5 +91,7 @@ def checkout(skus):
 
     return total
 
+price = checkout('XYZ')
+print(price)
 
 
