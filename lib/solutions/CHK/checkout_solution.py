@@ -54,7 +54,8 @@ def checkout(skus):
 
     return total
 
-price= checkout('FFF')
+price= checkout('FFFF')
 print(price)
+
 
 
