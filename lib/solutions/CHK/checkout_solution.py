@@ -87,8 +87,3 @@ def checkout(skus):
         total += price_dict[item] * shopping_cart[item]
 
     return total
-
-
-
-
-
