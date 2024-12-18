@@ -7,7 +7,7 @@ def checkout(skus):
 
     multi_offers_dict = {'A': {5:200, 3:130}, 'B': {2:45}, 'H': {10:80, 5:45}, 'K':{2:120}, 'P':{5:200}, 'Q':{3:80}, 'V':{3:130, 2:90}}
     one_free_offers_dict = {'E': (2,'B'), 'F':(2,'F'), 'N':(3,'M'), 'R':(3,'Q'), 'U':(3,'U')}
-    group_offers_dict = {45: {3: ['Z', 'Y', 'S', 'T', 'X']}}
+    group_offers_dict = {45: (3, ['Z', 'Y', 'S', 'T', 'X'])}
 
 
 
@@ -21,7 +21,6 @@ def checkout(skus):
             return -1
 
     total = 0
-
 
     # apply one free offers first
     for item in shopping_cart:
@@ -54,13 +53,18 @@ def checkout(skus):
 
                         break
 
-        
+    for offer in group_offers_dict:
+        while True:
+            count = 0
+
+
 
     for item in shopping_cart:
         total += price_dict[item] * shopping_cart[item]
 
 
     return total
+
 
 
 
