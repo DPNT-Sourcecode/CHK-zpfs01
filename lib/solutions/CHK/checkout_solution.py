@@ -27,10 +27,14 @@ def checkout(skus):
 
                     break
         
+        print(item)
         if item in one_free_offers_dict:
             free_item = one_free_offers_dict[item][1]
-
-            while shopping_cart[item] > one_free_offers_dict[item][0] and free_item:
+            print(shopping_cart[item])
+            print(one_free_offers_dict[item][0])
+            print(shopping_cart[free_item])
+            while shopping_cart[item] >= one_free_offers_dict[item][0] and shopping_cart[free_item]:
+                print('decreasing')
                 shopping_cart[free_item] -= 1
 
 
@@ -45,3 +49,4 @@ def checkout(skus):
 
 price = checkout('BEE')
 print(price) 
+
