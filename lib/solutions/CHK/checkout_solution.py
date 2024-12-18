@@ -53,6 +53,7 @@ def checkout(skus):
 
                         break
 
+    # then group offers
     for offer in group_offers_dict:
         print('offering')
         threshold = group_offers_dict[offer][0]
@@ -68,37 +69,28 @@ def checkout(skus):
             item = group_offers_dict[offer][1][x]
             
             # above threshold, apply discount
-            print('count: ' + str(count))
             if count + item_num_list[x] >= threshold:
                 total += offer
 
                 item_num_list[x] -= (threshold-count)
                 count = 0
-                for y in range(0, x):
+                # update cart
+                for y in range(0, x+1):
                     shopping_cart[group_offers_dict[offer][1][y]] = item_num_list[y]
 
-                print(total)
-                print(item_num_list)
-                print(shopping_cart)
             else:
-                print('x:' + str(x))
-                print(item_num_list[x])
                 count += item_num_list[x]
                 item_num_list[x] = 0
                 x += 1
                 if x > len(item_num_list)-1:
                     break
 
-
-
-
     for item in shopping_cart:
         total += price_dict[item] * shopping_cart[item]
 
-
     return total
 
-price = checkout('XYZ')
+price = checkout('XYSTZ')
 print(price)
 
 
