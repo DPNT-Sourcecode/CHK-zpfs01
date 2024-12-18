@@ -7,7 +7,7 @@ def checkout(skus):
     multi_offers_dict = {'A': {5:200, 3:130}, 'B': {2:45}}
     one_free_offers_dict = {'E': (2,'B')}
 
-    shopping_cart = {'A': 0, 'B': 0, 'C': 0, 'D': 0}
+    shopping_cart = {'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0}
 
     for char in skus:
         if char in shopping_cart:
@@ -17,12 +17,31 @@ def checkout(skus):
 
     total = 0
 
-
     for item in shopping_cart:
-        if item in offers_dict:
-            remainder = shopping_cart[item] % offers_dict[item][0]
-            total += (math.floor(shopping_cart[item] / offers_dict[item][0]) * offers_dict[item][1]) + (price_dict[item]*remainder)
-        else:
-            total += price_dict[item] * shopping_cart[item]
+        if item in multi_offers_dict:
+            for offer in multi_offers_dict[item]:
+                if shopping_cart[item] > offer:
+                    total += (math.floor(shopping_cart[item] / offer) * multi_offers_dict[item][offer])
+                    remainder = shopping_cart[item] % offer
+                    shopping_cart[item] = remainder
+
+                    break
+        
+        if item in one_free_offers_dict:
+            free_item = one_free_offers_dict[item][1]
+
+            while shopping_cart[item] > one_free_offers_dict[item][0] and free_item:
+                shopping_cart[free_item] -= 1
+
+
+    
+    for item in shopping_cart:
+        total += price_dict[item] * shopping_cart[item]
+
+    
 
     return total
+
+
+price = checkout('BEE')
+print(price) 
