@@ -24,10 +24,14 @@ def checkout(skus):
             free_item = one_free_offers_dict[item][1]
             offer_item_num = shopping_cart[item]
 
-            while offer_item_num >= one_free_offers_dict[item][0] and shopping_cart[free_item]:
-                shopping_cart[free_item] -= 1
-                offer_item_num -= one_free_offers_dict[item][0]
-
+            if free_item != item:
+                while offer_item_num >= one_free_offers_dict[item][0] and shopping_cart[free_item]:
+                    shopping_cart[free_item] -= 1
+                    offer_item_num -= one_free_offers_dict[item][0]
+            else: 
+                while offer_item_num > one_free_offers_dict[item][0] and shopping_cart[free_item]:
+                    shopping_cart[free_item] -= 1
+                    offer_item_num -= one_free_offers_dict[item][0]
 
     # then multi offers
     for item in shopping_cart:
@@ -49,5 +53,8 @@ def checkout(skus):
 
 
     return total
+
+price= checkout('FFF')
+print(price)
 
 
