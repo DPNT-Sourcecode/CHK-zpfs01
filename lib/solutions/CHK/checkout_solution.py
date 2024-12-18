@@ -56,6 +56,3 @@ def checkout(skus):
 
 price= checkout('FFFF')
 print(price)
-
-
-
