@@ -19,9 +19,9 @@ def checkout(skus):
     for item in shopping_cart:
         if item in offers_dict:
             remainder = shopping_cart[item] % offers_dict[item][0]
-            total += (math.floor(shopping_cart[item] / offers_dict[item][0])*offers_dict[item][1]) + (price_dict[item]*remainder)
+            total += (math.floor(shopping_cart[item] / offers_dict[item][0]) * offers_dict[item][1]) + (price_dict[item]*remainder)
         else:
             total += price_dict[item] * shopping_cart[item]
 
+    return total
 
-checkout('AAABB')
